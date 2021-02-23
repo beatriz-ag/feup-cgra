@@ -143,8 +143,6 @@ export class MyTangram extends CGFobject {
         this.bigTriangle.display();
         scene.popMatrix();
 
-        this.initGLBuffers();
-
     }
 
 }
