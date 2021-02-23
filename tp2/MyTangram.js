@@ -23,7 +23,7 @@ export class MyTangram extends CGFobject {
         this.bigTriangle = new MyTriangleSmall(scene);
     }
 
-    display(scene){
+    display(){
         /* Diamond matrix */
         //Transalation
         var diamondMatrix = [
@@ -110,38 +110,38 @@ export class MyTangram extends CGFobject {
         ]
         /* End big triangle matrixs*/
 
-        scene.pushMatrix();
-        scene.multMatrix(diamondMatrix);
+        this.scene.pushMatrix();
+        this.scene.multMatrix(diamondMatrix);
         this.diamond.display();
-        scene.popMatrix();
+        this.scene.popMatrix();
 
-        scene.pushMatrix();
-        scene.multMatrix(parallelogramMatrix1);
-        scene.multMatrix(parallelogramMatrix2);
+        this.scene.pushMatrix();
+        this.scene.multMatrix(parallelogramMatrix1);
+        this.scene.multMatrix(parallelogramMatrix2);
         this.parallelogram.display();
-        scene.popMatrix();
+        this.scene.popMatrix();
 
-        scene.pushMatrix();
-        scene.multMatrix(purpleTriangleMatrix);
+        this.scene.pushMatrix();
+        this.scene.multMatrix(purpleTriangleMatrix);
         this.purpleTriangle.display();
-        scene.popMatrix();
+        this.scene.popMatrix();
 
-        scene.pushMatrix();
-        scene.multMatrix(redTriangleMatrix1);
-        scene.multMatrix(redTriangleMatrix2);
+        this.scene.pushMatrix();
+        this.scene.multMatrix(redTriangleMatrix1);
+        this.scene.multMatrix(redTriangleMatrix2);
         this.redTriangle.display();
-        scene.popMatrix();
+        this.scene.popMatrix();
 
-        scene.pushMatrix();
-        scene.multMatrix(pinkTriangleMatrix);
+        this.scene.pushMatrix();
+        this.scene.multMatrix(pinkTriangleMatrix);
         this.pinkTriangle.display();
-        scene.popMatrix();
+        this.scene.popMatrix();
 
-        scene.pushMatrix();
-        scene.multMatrix(bigTriangleMatrix1);
-        scene.multMatrix(bigTriangleMatrix2);
+        this.scene.pushMatrix();
+        this.scene.multMatrix(bigTriangleMatrix1);
+        this.scene.multMatrix(bigTriangleMatrix2);
         this.bigTriangle.display();
-        scene.popMatrix();
+        this.scene.popMatrix();
 
     }
 

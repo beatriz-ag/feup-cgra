@@ -68,6 +68,7 @@ export class MyScene extends CGFscene {
     this.exercise_3 = false;
     this.exercise_3_4 = false;
     this.exercise_3_5 = false;
+    this.exercise_4 = false;
 
   }
   initLights() {
@@ -219,20 +220,21 @@ export class MyScene extends CGFscene {
     /**
      * Exercise 3
      */
-    var cubeMatrix =[
+    //Translation
+    var cubeMatrix3_4 =[
                   1, 0, 0, 0,
                   0, 1, 0, 0,
                   0, 0, 1, 0,
                   0, 0, 0.5, 1
     ]
-
+    //Rotation
     var cubeMatrix3_5 =[
                   1, 0, 0, 0,
                   0, 0, -1, 0,
                   0, 1, 0, 0,
                   0, 0, 0, 1
     ]
-
+    //Translation
     var cubeMatrix3_5_2 = [
                   1, 0, 0, 0,
                   0, 1, 0, 0,
@@ -240,6 +242,31 @@ export class MyScene extends CGFscene {
                   0.5, -1, 0.5, 1
     ]
     
+    /**
+     * Exercise 4
+     */
+    var ex5_front = [
+      1, 0, 0, 0,
+      0, 1, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0.5, 1
+    ]
+
+   var ex5_y = [
+      0, 0, -1, 0,
+      0, 1, 0, 0,
+      1, 0, 0, 0,
+      0, 0, 0, 1
+    ]
+
+   var ex5_x = [
+      1, 0, 0, 0,
+      0, 0, 1, 0,
+      0, -1, 0, 0,
+      0, 0, 0, 1
+    ]
+
+
     this.multMatrix(sca);
 
     // ---- BEGIN Primitive drawing section
@@ -279,14 +306,14 @@ export class MyScene extends CGFscene {
         this.popMatrix();
     }
 
-    if(this.exercise_2_3) this.myTangram.display(this);
+    if(this.exercise_2_3) this.myTangram.display();
 
     if(this.exercise_3) this.myCube.display();
 
     if(this.exercise_3_4){
-      this.myTangram.display(this);
+      this.myTangram.display();
       this.pushMatrix();
-      this.multMatrix(cubeMatrix);
+      this.multMatrix(cubeMatrix3_4);
       this.myCube.display();
       this.popMatrix();
     } 
@@ -299,65 +326,56 @@ export class MyScene extends CGFscene {
       this.multMatrix(cubeMatrix);
       this.myCube.display();
       this.popMatrix();
-
     }
 
+   if(this.exercise_4){
+      //Face da frente
+      this.pushMatrix();
+      this.multMatrix(ex5_front);
+      this.myQuad.display();
+      this.popMatrix();
 
-    var ex5_frente = [
-      1, 0, 0, 0,
-      0, 1, 0, 0,
-      0, 0, 1, 0,
-      0, 0, 0.5, 1
-   ]
+      //Face de trás
+      this.pushMatrix();
+      this.multMatrix(ex5_y);
+      this.multMatrix(ex5_y);
+      this.multMatrix(ex5_front);
+      this.myQuad.display();
+      this.popMatrix();
+      
+      //Face de baixo
+      this.pushMatrix();
+      this.multMatrix(ex5_x);
+      this.multMatrix(ex5_front);
+      this.myQuad.display();
+      this.popMatrix();
 
-   var ex5_y = [
-      0, 0, -1, 0,
-      0, 1, 0, 0,
-      1, 0, 0, 0,
-      0, 0, 0, 1
-   ]
+      //Face de cima
+      this.pushMatrix();
+      this.multMatrix(ex5_x);
+      this.multMatrix(ex5_x);
+      this.multMatrix(ex5_x);
+      this.multMatrix(ex5_front);
+      this.myQuad.display();
+      this.popMatrix();
 
-   var ex5_x = [
-      1, 0, 0, 0,
-      0, 0, 1, 0,
-      0, -1, 0, 0,
-      0, 0, 0, 1
-   ]
+      //Face direita
+      this.pushMatrix();
+      this.multMatrix(ex5_y);
+      this.multMatrix(ex5_front);
+      this.myQuad.display();
+      this.popMatrix();
 
-    this.pushMatrix();
-    this.multMatrix(ex5_frente);
-    this.myQuad.display();
-    this.popMatrix();
-    this.pushMatrix();
-    this.multMatrix(ex5_y);
-    this.multMatrix(ex5_y);
-    this.multMatrix(ex5_frente);
-    this.myQuad.display();
-    this.popMatrix();
-    this.pushMatrix();
-    this.multMatrix(ex5_x);
-    this.multMatrix(ex5_frente);
-    this.myQuad.display();
-    this.popMatrix();
-    this.pushMatrix();
-    this.multMatrix(ex5_x);
-    this.multMatrix(ex5_x);
-    this.multMatrix(ex5_x);
-    this.multMatrix(ex5_frente);
-    this.myQuad.display();
-    this.popMatrix();
-    this.pushMatrix();
-    this.multMatrix(ex5_y);
-    this.multMatrix(ex5_frente);
-    this.myQuad.display();
-    this.popMatrix();
-    this.pushMatrix();
-    this.multMatrix(ex5_y);
-    this.multMatrix(ex5_y);
-    this.multMatrix(ex5_y);
-    this.multMatrix(ex5_frente);
-    this.myQuad.display();
-    this.popMatrix();
+      //Face esquerda
+      this.pushMatrix();
+      this.multMatrix(ex5_y);
+      this.multMatrix(ex5_y);
+      this.multMatrix(ex5_y);
+      this.multMatrix(ex5_front);
+      this.myQuad.display();
+      this.popMatrix();
+
+    }
     
     // ---- END Primitive drawing section
   }
