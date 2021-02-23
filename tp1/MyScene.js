@@ -134,7 +134,7 @@ export class MyScene extends CGFscene {
 
     // ---- BEGIN Primitive drawing section
 
-    /**
+     /**
      * Ex1
      */
 
@@ -147,7 +147,7 @@ export class MyScene extends CGFscene {
      */
     if(this.displaySmallTriangle) this.smallTriangle.display();
     if(this.displayBigTriangle) this.bigTriangle.display();
-  
+
     // ---- END Primitive drawing section
   }
 }
