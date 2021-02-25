@@ -6,7 +6,7 @@ import { MyTriangleSmall } from "./MyTriangleSmall.js";
 import { MyTriangleBig } from "./MyTriangleBig.js";
 import { MyTangram } from "./MyTangram.js";
 import { MyUnitCube } from "./MyUnitCube.js";
-import { MyQuad } from "./MyQuad.js";
+import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 
 
 /**
@@ -52,11 +52,10 @@ export class MyScene extends CGFscene {
      */
     this.myCube = new MyUnitCube(this);
 
-
     /**
      * Initialize scene objects for the exercise 4
      */
-    this.myQuad = new MyQuad(this);
+    this.myCubicQuad = new MyUnitCubeQuad(this);
 
 
     //Objects connected to MyInterface
@@ -90,9 +89,9 @@ export class MyScene extends CGFscene {
   
   //RED
   setDefaultAppearance() {
-    this.setAmbient(1, 0, 0, 1);
-    this.setDiffuse(1, 0, 0, 1);
-    this.setSpecular(1, 0, 0, 1);
+    this.setAmbient(0.2, 0.4, 0.8, 1);
+    this.setDiffuse(0.2, 0.4, 0.8, 1);
+    this.setSpecular(0.2, 0.4, 0.8, 1);
     this.setShininess(10.0);
   }
   
@@ -221,50 +220,58 @@ export class MyScene extends CGFscene {
      * Exercise 3
      */
     //Translation
-    var cubeMatrix3_4 =[
+    var cubeMatrix3 =[
                   1, 0, 0, 0,
                   0, 1, 0, 0,
                   0, 0, 1, 0,
                   0, 0, 0.5, 1
     ]
+    //Scalating
+    var cubeMatrix3_4_1 = [
+                  10, 0, 0, 0,
+                  0, 4, 0, 0,
+                  0, 0, 1, 0,
+                  0, 0, 0, 1
+
+    ]
+    //Transalation
+    var cubeMatrix3_4_2 = [
+                  1, 0, 0, 0,
+                  0, 1, 0, 0,
+                  0, 0, 1, 0,
+                -0.5, 1, -0.5, 1
+    ]
     //Rotation
-    var cubeMatrix3_5 =[
+    var ex3_5_rotation =[
                   1, 0, 0, 0,
                   0, 0, -1, 0,
                   0, 1, 0, 0,
                   0, 0, 0, 1
     ]
     //Translation
-    var cubeMatrix3_5_2 = [
+    var ex3_5_cube_translation = [
                   1, 0, 0, 0,
                   0, 1, 0, 0,
                   0, 0, 1, 0,
-                  0.5, -1, 0.5, 1
+                  0.5, -0.5, -0.5, 1
+    ]
+    //Scalating
+    var ex3_5_scalating = [
+                  10, 0, 0, 0,
+                  0, 1, 0, 0,
+                  0, 0, 4, 0,
+                  0,  0, 0, 1
+
+    ]
+    //Translation
+    var ex3_5_tangram_translation=[
+      1, 0, 0, 0,
+      0, 1, 0, 0,
+      0, 0, 1, 0,
+      5.5, -3,0, 1
     ]
     
-    /**
-     * Exercise 4
-     */
-    var ex5_front = [
-      1, 0, 0, 0,
-      0, 1, 0, 0,
-      0, 0, 1, 0,
-      0, 0, 0.5, 1
-    ]
 
-   var ex5_y = [
-      0, 0, -1, 0,
-      0, 1, 0, 0,
-      1, 0, 0, 0,
-      0, 0, 0, 1
-    ]
-
-   var ex5_x = [
-      1, 0, 0, 0,
-      0, 0, 1, 0,
-      0, -1, 0, 0,
-      0, 0, 0, 1
-    ]
 
 
     this.multMatrix(sca);
@@ -313,68 +320,35 @@ export class MyScene extends CGFscene {
     if(this.exercise_3_4){
       this.myTangram.display();
       this.pushMatrix();
-      this.multMatrix(cubeMatrix3_4);
+      this.multMatrix(cubeMatrix3_4_2);
+      this.multMatrix(cubeMatrix3_4_1);
       this.myCube.display();
       this.popMatrix();
     } 
 
     if(this.exercise_3_5){
+
       this.pushMatrix();
-      this.multMatrix(cubeMatrix3_5_2);
-      this.multMatrix(cubeMatrix3_5);
-      this.myTangram.display(this);
-      this.multMatrix(cubeMatrix);
+      this.multMatrix(ex3_5_scalating);
+      this.multMatrix(ex3_5_rotation);
+      this.multMatrix(ex3_5_cube_translation);
       this.myCube.display();
+      this.popMatrix();
+
+      this.pushMatrix();
+      this.multMatrix(ex3_5_rotation);
+      this.multMatrix(ex3_5_tangram_translation);
+      this.myTangram.display();
       this.popMatrix();
     }
 
    if(this.exercise_4){
-      //Face da frente
       this.pushMatrix();
-      this.multMatrix(ex5_front);
-      this.myQuad.display();
+      this.multMatrix(ex3_5_scalating);
+      this.multMatrix(ex3_5_rotation);
+      this.multMatrix(ex3_5_cube_translation);
+      this.myCubicQuad.display();
       this.popMatrix();
-
-      //Face de trás
-      this.pushMatrix();
-      this.multMatrix(ex5_y);
-      this.multMatrix(ex5_y);
-      this.multMatrix(ex5_front);
-      this.myQuad.display();
-      this.popMatrix();
-      
-      //Face de baixo
-      this.pushMatrix();
-      this.multMatrix(ex5_x);
-      this.multMatrix(ex5_front);
-      this.myQuad.display();
-      this.popMatrix();
-
-      //Face de cima
-      this.pushMatrix();
-      this.multMatrix(ex5_x);
-      this.multMatrix(ex5_x);
-      this.multMatrix(ex5_x);
-      this.multMatrix(ex5_front);
-      this.myQuad.display();
-      this.popMatrix();
-
-      //Face direita
-      this.pushMatrix();
-      this.multMatrix(ex5_y);
-      this.multMatrix(ex5_front);
-      this.myQuad.display();
-      this.popMatrix();
-
-      //Face esquerda
-      this.pushMatrix();
-      this.multMatrix(ex5_y);
-      this.multMatrix(ex5_y);
-      this.multMatrix(ex5_y);
-      this.multMatrix(ex5_front);
-      this.myQuad.display();
-      this.popMatrix();
-
     }
     
     // ---- END Primitive drawing section

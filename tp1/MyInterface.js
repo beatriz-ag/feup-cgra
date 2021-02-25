@@ -18,18 +18,19 @@ export class MyInterface extends CGFinterface {
         this.gui = new dat.GUI();
 
         //Checkbox element in GUI
-        this.gui.add(this.scene, 'displayAxis').name('Display Axis');
-        this.gui.add(this.scene, 'displayDiamond').name('Display Diamond');
+        this.gui.add(this.scene, 'displayAxis').name('Axis');
+        this.gui.add(this.scene, 'displayDiamond').name('Diamond');
         /**
          * Ex1
          */
-        this.gui.add(this.scene, 'displayTriangle').name('Display Triangle');
-        this.gui.add(this.scene, 'displayParallelogram').name('Display Parallelogram');
+        this.gui.add(this.scene, 'displayTriangle').name('Triangle');
+
+        this.gui.add(this.scene, 'displayParallelogram').name('Parallelogram');
         /**
          * Ex2
          */
-        this.gui.add(this.scene, 'displaySmallTriangle').name('Display Triangle Small')
-        this.gui.add(this.scene, 'displayBigTriangle').name('Display Triangle Big')
+        this.gui.add(this.scene, 'displaySmallTriangle').name('Triangle Small')
+        this.gui.add(this.scene, 'displayBigTriangle').name('Triangle Big')
 
 
         //Slider element in GUI
