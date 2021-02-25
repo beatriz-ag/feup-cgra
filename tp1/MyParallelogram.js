@@ -11,6 +11,7 @@ export class MyParallelogram extends CGFobject {
 	}
 	
 	initBuffers() {
+		//double-faced
 		this.vertices = [
 			0, 0, 0,	//canto esq inf -> 0
 			1, 1, 0,	//canto esq sup -> 1
