@@ -3,10 +3,7 @@ import { MyDiamond } from "./MyDiamond.js";
 import { MyParallelogram } from "./MyParallelogram.js";
 import { MyTriangle } from "./MyTriangle.js";
 import { MyTriangleSmall } from "./MyTriangleSmall.js";
-import { MyTriangleBig } from "./MyTriangleBig.js";
 import { MyTangram } from "./MyTangram.js";
-import { MyUnitCube } from "./MyUnitCube.js";
-import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 
 
 /**
@@ -47,15 +44,8 @@ export class MyScene extends CGFscene {
 
     this.myTangram = new MyTangram(this);
 
-    /**
-     * Initialize scene objects for the exercise 3
-     */
-    this.myCube = new MyUnitCube(this);
 
-    /**
-     * Initialize scene objects for the exercise 4
-     */
-    this.myCubicQuad = new MyUnitCubeQuad(this);
+
 
 
     //Objects connected to MyInterface
@@ -64,10 +54,7 @@ export class MyScene extends CGFscene {
 
     this.exercise_2_1_2 = false;
     this.exercise_2_3 = false;
-    this.exercise_3 = false;
-    this.exercise_3_4 = false;
-    this.exercise_3_5 = false;
-    this.exercise_4 = false;
+
 
   }
   initLights() {
@@ -216,61 +203,6 @@ export class MyScene extends CGFscene {
     ]
     /* End big triangle matrixs*/
 
-    /**
-     * Exercise 3
-     */
-    //Translation
-    var cubeMatrix3 =[
-                  1, 0, 0, 0,
-                  0, 1, 0, 0,
-                  0, 0, 1, 0,
-                  0, 0, 0.5, 1
-    ]
-    //Scalating
-    var cubeMatrix3_4_1 = [
-                  10, 0, 0, 0,
-                  0, 4, 0, 0,
-                  0, 0, 1, 0,
-                  0, 0, 0, 1
-
-    ]
-    //Transalation
-    var cubeMatrix3_4_2 = [
-                  1, 0, 0, 0,
-                  0, 1, 0, 0,
-                  0, 0, 1, 0,
-                -0.5, 1, -0.5, 1
-    ]
-    //Rotation
-    var ex3_5_rotation =[
-                  1, 0, 0, 0,
-                  0, 0, -1, 0,
-                  0, 1, 0, 0,
-                  0, 0, 0, 1
-    ]
-    //Translation
-    var ex3_5_cube_translation = [
-                  1, 0, 0, 0,
-                  0, 1, 0, 0,
-                  0, 0, 1, 0,
-                  0.5, -0.5, -0.5, 1
-    ]
-    //Scalating
-    var ex3_5_scalating = [
-                  10, 0, 0, 0,
-                  0, 1, 0, 0,
-                  0, 0, 4, 0,
-                  0,  0, 0, 1
-
-    ]
-    //Translation
-    var ex3_5_tangram_translation=[
-      1, 0, 0, 0,
-      0, 1, 0, 0,
-      0, 0, 1, 0,
-      5.5, -3,0, 1
-    ]
-    
 
 
 
@@ -315,41 +247,8 @@ export class MyScene extends CGFscene {
 
     if(this.exercise_2_3) this.myTangram.display();
 
-    if(this.exercise_3) this.myCube.display();
 
-    if(this.exercise_3_4){
-      this.myTangram.display();
-      this.pushMatrix();
-      this.multMatrix(cubeMatrix3_4_2);
-      this.multMatrix(cubeMatrix3_4_1);
-      this.myCube.display();
-      this.popMatrix();
-    } 
 
-    if(this.exercise_3_5){
-
-      this.pushMatrix();
-      this.multMatrix(ex3_5_scalating);
-      this.multMatrix(ex3_5_rotation);
-      this.multMatrix(ex3_5_cube_translation);
-      this.myCube.display();
-      this.popMatrix();
-
-      this.pushMatrix();
-      this.multMatrix(ex3_5_rotation);
-      this.multMatrix(ex3_5_tangram_translation);
-      this.myTangram.display();
-      this.popMatrix();
-    }
-
-   if(this.exercise_4){
-      this.pushMatrix();
-      this.multMatrix(ex3_5_scalating);
-      this.multMatrix(ex3_5_rotation);
-      this.multMatrix(ex3_5_cube_translation);
-      this.myCubicQuad.display();
-      this.popMatrix();
-    }
     
     // ---- END Primitive drawing section
   }
