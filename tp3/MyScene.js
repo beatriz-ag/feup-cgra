@@ -158,6 +158,10 @@ export class MyScene extends CGFscene {
         }
 
         this.customMaterial = new CGFappearance(this);
+        /**
+         * Exercise 6
+         */
+        this.tangramApplyCustom = false;
 
         this.updateCustomMaterial();
 

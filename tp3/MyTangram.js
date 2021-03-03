@@ -70,7 +70,7 @@ export class MyTangram extends CGFobject {
         this.pink = new CGFappearance(this.scene);
         this.pink.setAmbient(1.0, 0.61, 0.81, 1.0);
         this.pink.setDiffuse(1.0, 0.61, 0.81, 1.0);
-        this.pink.setSpecular(1.0, 0.61, 0.81, 1.0);
+        this.pink.setSpecular(0, 0, 0, 1.0);
         this.pink.setShininess(10.0);
     }
 
@@ -181,7 +181,8 @@ export class MyTangram extends CGFobject {
 
         this.scene.pushMatrix();
         this.scene.multMatrix(diamondMatrix);
-        this.green.apply();
+        if(this.scene.tangramApplyCustom) this.scene.customMaterial.apply();
+        else this.green.apply();
         this.diamond.display();
         this.scene.popMatrix();
 
