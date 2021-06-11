@@ -1,6 +1,6 @@
 # CGRA 2020/2021
 
-## Group T7xG06
+## Group T07G06
 | Name             | Number    | E-Mail               |
 | ---------------- | --------- | -------------------- |
 | <a href="https://sigarra.up.pt/feup/pt/fest_geral.cursos_list?pv_num_unico=201906230">Beatriz Aguiar</a>   | 201906230 | up201906230@fe.up.pt |
